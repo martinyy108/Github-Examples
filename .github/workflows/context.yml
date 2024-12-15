@@ -1,0 +1,35 @@
+name: Context Example
+
+on: [push]
+
+jobs:
+    print-context:
+        runs-on: ubuntu-latest
+        steps:
+              - name: Checkout repository
+                uses: actions/checkout@v2
+        
+              - name: Print GitHub context
+                env:
+                  GITHUB_CONTEXT: ${{ toJson(github) }}
+                run: echo "$GITHUB_CONTEXT"
+        
+              - name: Print Job context
+                env:
+                  JOB_CONTEXT: ${{ toJson(job) }}
+                run: echo "$JOB_CONTEXT"
+        
+              - name: Print Steps context
+                env:
+                  STEPS_CONTEXT: ${{ toJson(steps) }}
+                run: echo "$STEPS_CONTEXT"
+        
+              - name: Print GitHub Action
+                env:
+                  GITHUB_ACTION: ${{ github.action }}
+                run: echo "$GITHUB_ACTION"
+          
+              - name: Print GitHub Actor
+                env:
+                  GITHUB_ACTOR: ${{ github.actor }}
+                run: echo "$GITHUB_ACTOR"
