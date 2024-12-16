@@ -7,17 +7,17 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-              - name: Checkout repository
-                uses: actions/checkout@v3
+          - name: Checkout repository
+            uses: actions/checkout@v3
         
-              - name: Run node-hello action
-                id: node-hello
-                uses: ./.github/actions/node-hello
-                with:
-                  who-to-greet: 'World'
+          - name: Run node-hello action
+            id: node-hello
+            uses: ./.github/actions/node-hello
+            with:
+              who-to-greet: 'World'
         
-              - name: Use output from node-hello
-                env:
-                  GREETING: ${{ steps.node-hello.outputs.greeting }}
-                run: |
-                  echo "The greeting was: $GREETING"
+          - name: Use output from node-hello
+            env:
+              GREETING: ${{ steps.node-hello.outputs.greeting }}
+            run: |
+              echo "The greeting was: $GREETING"
