@@ -12,7 +12,7 @@ jobs:
     
           - name: Run node-hello action
             id: node-hello
-            uses: actions/hello-world-javascript-action@v1.1
+            uses: ./.github/actions/node-hello
             with:
               who-to-greet: 'World'
     
