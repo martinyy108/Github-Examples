@@ -1,0 +1,23 @@
+name: Custom JS Action Workflow
+
+on: [push, pull_request]
+
+jobs:
+      build:
+        runs-on: ubuntu-latest
+    
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v2
+    
+          - name: Run node-hello action
+            id: node-hello
+            uses: actions/hello-world-javascript-action@v1.1
+            with:
+              who-to-greet: 'World'
+    
+          - name: Use output from node-hello
+            env:
+              GREETING: ${{ steps.node-hello.outputs.greeting }}
+            run: |
+              echo "The greeting was: $GREETING"
