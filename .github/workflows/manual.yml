@@ -21,6 +21,10 @@ on:
         default: false
         type: boolean
 
+concurrency:
+  group: manual-trigger-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   greet:
     runs-on: ubuntu-latest
@@ -32,6 +36,7 @@ jobs:
         run: |
           echo "${{ inputs.greeting }}, ${{ inputs.name }}!"
       - name: Display File Content
+        if: ${{ inputs.show_file_content }}
         run: |
           echo "Contents of the file:"
           cat ./decoded_file.txt

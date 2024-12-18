@@ -1,0 +1,25 @@
+name: 'Hello World'
+
+on:
+    push:
+    workflow_dispatch:
+        inputs:
+            who-to-greet:
+                description: 'Name of the person to greet'
+                required: true
+
+jobs:
+    greet:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Run greeting script
+              run: |
+                echo "Hello ${{ github.event.inputs['who-to-greet'] }}!"
+                echo "time=$(date)" >> $GITHUB_ENV
+                    
+            - name: Set output
+              id: set_output
+              run: echo "::set-output name=time::$(date)"
