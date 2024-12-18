@@ -15,6 +15,11 @@ on:
         description: 'Base64 encoded content of a file'
         required: false
         type: string
+      show_file_content:
+        description: 'Whether to display the file content'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   greet:
