@@ -22,4 +22,4 @@ jobs:
                     
             - name: Set output
               id: set_output
-              run: echo "::set-output name=time::$(date)"
+              run: echo "time=$(date)" >> $GITHUB_ENV
